@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  sonarr:
+    image: ghcr.io/linuxserver/sonarr
+    container_name: sonarr
+    hostname: sonarr
+    restart: unless-stopped
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Ho_Chi_Minh
+      - UMASK_SET=022
+    volumes:
+      - sonarr:/config
+      - data:/data
+    ports:
+      - 8989:8989
+
+volumes:
+  sonarr:
+    external: true
+  data:
+    external: true
